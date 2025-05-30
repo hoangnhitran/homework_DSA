@@ -357,7 +357,22 @@ int countElements(List *L)
     }
     return count;
 }
-
+List* reverseList (List* L) {
+    if (L->p_head == nullptr || L->p_head == nullptr) {
+        return L;
+    }
+    NODE* dummy = L->p_head->pNext;
+    NODE* prev = nullptr;
+    while(L->p_head != nullptr && L->p_head->pNext != nullptr) {
+        if (prev != nullptr) {
+            prev->pNext = L->p_head->pNext;
+        }
+        prev = L->p_head;
+        NODE* nextNode = L->p_head->pNext->pNext;
+        L->p_head->pNext = nextNode;
+        L->p_head = nextNode;
+    }
+}
 List *reverseList(List *L)
 {
     if (L == nullptr || L->p_head == nullptr) {
